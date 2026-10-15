@@ -1,0 +1,242 @@
+{
+  "products": [
+    {
+      "id": "dfff4421-1b89-44bf-8bd0-e86f9f83fd62",
+      "name": "Aura Crystal Stilettos",
+      "category": "Shoes",
+      "price": 1250,
+      "description": "Elegant stilettos encrusted with fine crystals. Perfect for a luxurious evening.",
+      "availability": true,
+      "featured": true,
+      "images": [
+        "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop"
+      ],
+      "createdAt": "2026-10-13T12:34:56.029Z"
+    },
+    {
+      "id": "bae59a03-5c93-4461-8111-8999effa55d3",
+      "name": "Monogram Leather Tote",
+      "category": "Bags",
+      "price": 2400,
+      "description": "Premium handcrafted Italian leather tote with signature monogram pattern.",
+      "availability": true,
+      "featured": true,
+      "images": [
+        "https://images.unsplash.com/photo-1584916201218-f4242ceb4809?q=80&w=800&auto=format&fit=crop"
+      ],
+      "createdAt": "2026-10-13T12:34:56.030Z"
+    },
+    {
+      "id": "b865eee5-8788-4461-b777-f73e986a1344",
+      "name": "Silk Chiffon Evening Gown",
+      "category": "Clothes",
+      "price": 3100,
+      "description": "Flowing silk chiffon gown with delicate embroidery and a timeless silhouette.",
+      "availability": true,
+      "featured": true,
+      "images": [
+        "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=800&auto=format&fit=crop"
+      ],
+      "createdAt": "2026-10-13T12:34:56.030Z"
+    },
+    {
+      "id": "1aca5a18-8335-4ec0-b46f-0e950edb1f10",
+      "name": "Test Product",
+      "category": "Shoes",
+      "price": 100,
+      "description": "Test",
+      "availability": false,
+      "featured": false,
+      "images": [],
+      "createdAt": "2026-10-13T13:48:28.512Z"
+    }
+  ],
+  "content": {
+    "hero": {
+      "headline": "Elevating Women's Luxury Fashion",
+      "subheading": "Discover premium shoes, handbags, and clothing designed for elegance, confidence, and timeless beauty."
+    },
+    "about": {
+      "text": "ADA'S HENRY is a premium luxury fashion brand dedicated to empowering women through timeless elegance. We believe in providing only the finest materials, impeccable craftsmanship, and unique designs that make our customers feel confident and beautiful. Our mission is to become a globally recognized Nigerian luxury fashion brand."
+    },
+    "vision": {
+      "text": "Our vision is to redefine luxury fashion by blending modern sophistication with timeless elegance, empowering women to express their unique beauty. We are committed to building a brand that stands for quality, trust, and unparalleled customer satisfaction."
+    },
+    "contact": {
+      "email": "contact@adashenry.com",
+      "phone": "+234 123 456 7890",
+      "address": "123 Luxury Avenue, Lagos, Nigeria",
+      "hours": "Mon-Sat: 9AM - 6PM"
+    }
+  },
+  "messages": [
+    {
+      "id": "af88f623-a1a6-45bc-9536-ed7115e5ecad",
+      "email": "adas123@gmail.com",
+      "name": "Kenro",
+      "message": "get it done",
+      "replied": true,
+      "lastRepliedAt": "2026-10-15T00:16:01.555Z",
+      "replies": [
+        {
+          "id": "907c3ff9-0beb-414d-96b3-ba9aa749c595",
+          "inquiryId": "af88f623-a1a6-45bc-9536-ed7115e5ecad",
+          "to": "adas123@gmail.com",
+          "customerName": "Kenro",
+          "subject": "ADA'S HENRY — Order Confirmation & Consultation",
+          "message": "Dear Kenro, your order inquiry is being handled with utmost priority.",
+          "sentAt": "2026-10-15T00:13:50.736Z",
+          "previewUrl": "https://ethereal.email/message/atAatqfttlAC0HfGatAavp0L.yTpBQxWAAAAAjrK6359hN-tQjzoV1TsVHo"
+        },
+        {
+          "id": "be51de21-5577-4151-84c0-ba46ab557d00",
+          "inquiryId": "af88f623-a1a6-45bc-9536-ed7115e5ecad",
+          "to": "adas123@gmail.com",
+          "customerName": "Kenro",
+          "subject": "ADA'S HENRY Luxury Concierge — Response to your inquiry",
+          "message": "Dear Kenro,\n\nThank you for reaching out to ADA'S HENRY Luxury Boutique.\n\nWe have received your message regarding: \"get it done\".\n\nWe are delighted to assist you. At ADA'S HENRY, our collections are handcrafted with the finest materials and meticulous attention to detail.\n\n\n\nIf you have any questions or would like to proceed with reserving your selection, please feel free to let us know.\n\nWarm regards,\nADA'S HENRY Luxury Concierge Team\nWhatsApp: +234 906 756 6746 | Email: concierge@adashenry.com\nLagos, Nigeria",
+          "sentAt": "2026-10-15T00:16:01.555Z",
+          "previewUrl": "https://ethereal.email/message/atAbQKfttlAC0Ig6atAbQcAYPlgYjGRpAAAAAdnkGZxr-LqMjLe5b7duJR4"
+        }
+      ],
+      "created_at": "2026-10-15T00:13:50.736Z"
+    },
+    {
+      "id": "bef3ca90-0358-4ed1-9271-bbe04e60da89",
+      "email": "adaolowokenry123@gmail.com",
+      "name": "Kenry",
+      "message": "i want to other something precious",
+      "replied": true,
+      "lastRepliedAt": "2026-10-15T00:36:57.390Z",
+      "replies": [
+        {
+          "id": "f508de65-a7f2-403e-b519-7f1717b01d45",
+          "inquiryId": "bef3ca90-0358-4ed1-9271-bbe04e60da89",
+          "to": "adaolowokenry123@gmail.com",
+          "customerName": "Kenry",
+          "subject": "ADA'S HENRY Luxury Concierge — Response to your inquiry",
+          "message": "Dear Kenry, thank you for reaching out to ADA'S HENRY. We have reserved your requested item for immediate viewing and delivery.",
+          "sentAt": "2026-10-15T00:13:43.251Z",
+          "previewUrl": "https://ethereal.email/message/atAatqfttlAC0HfGatAat7JrKujo9rFpAAAAAUhD9g1LO7ZPbihLgzfW6Wk"
+        },
+        {
+          "id": "3ae4fac1-0727-4f47-905c-cc58fedb7701",
+          "inquiryId": "bef3ca90-0358-4ed1-9271-bbe04e60da89",
+          "to": "adaolowokenry123@gmail.com",
+          "customerName": "Kenry",
+          "subject": "ADA'S HENRY Luxury Concierge — Response to your inquiry",
+          "message": "Dear Kenry,\n\nThank you for reaching out to ADA'S HENRY Luxury Boutique.\n\nWe have received your message regarding: \"i want to other something precious\".\n\nWe are delighted to assist you. At ADA'S HENRY, our collections are handcrafted with the finest materials and meticulous attention to detail.\n\n\n\nIf you have any questions or would like to proceed with reserving your selection, please feel free to let us know.\n\nWarm regards,\nADA'S HENRY Luxury Concierge Team\nWhatsApp: +234 906 756 6746 | Email: concierge@adashenry.com\nLagos, Nigeria",
+          "sentAt": "2026-10-15T00:16:33.302Z",
+          "previewUrl": "https://ethereal.email/message/atAbQKfttlAC0Ig6atAbYbJrKujo9rGSAAAAAjlPjyzk.TAw2FnrmDgrPdQ"
+        },
+        {
+          "id": "c44a9022-eb56-4e91-8ba2-fbb073136e07",
+          "inquiryId": "bef3ca90-0358-4ed1-9271-bbe04e60da89",
+          "to": "adaolowokenry123@gmail.com",
+          "customerName": "Kenry",
+          "subject": "ADA'S HENRY Catalog — Availability & Pricing Details",
+          "message": "Dear Kenry,\n\nThank you for your interest in ADA'S HENRY exclusive collections.\n\nIn response to your inquiry regarding item availability and pricing, we are pleased to inform you that our signature pieces are currently available in our boutique inventory.\n\nProduct & Order Highlights:\n- Handcrafted with genuine premium materials\n- Complimentary bespoke packaging included\n- Priority reservation active upon your confirmation\n\nPlease let us know your preferred sizing and colorway so we can reserve this for you immediately.\n\nWarm regards,\nADA'S HENRY Sales & Concierge\nWhatsApp: +234 906 756 6746",
+          "sentAt": "2026-10-15T00:22:22.954Z",
+          "previewUrl": "https://ethereal.email/message/atAbQKfttlAC0Ig6atAcvrJrKujo9rHTAAAAAwxGChKwQyCdbYvj.1W7unQ"
+        },
+        {
+          "id": "f58d5b88-e6fd-4b8d-b39e-4d8f5827e123",
+          "inquiryId": null,
+          "to": "adaolowokenry123@gmail.com",
+          "customerName": "Kenry",
+          "subject": "ADA Luxury",
+          "message": "Test message",
+          "sentAt": "2026-10-15T00:36:57.390Z",
+          "method": "gmail_direct",
+          "liveDelivery": true
+        }
+      ],
+      "created_at": "2026-10-15T00:13:43.251Z",
+      "replyMethod": "gmail_direct"
+    }
+  ],
+  "subscribers": [],
+  "emailLogs": [
+    {
+      "id": "f58d5b88-e6fd-4b8d-b39e-4d8f5827e123",
+      "inquiryId": null,
+      "to": "adaolowokenry123@gmail.com",
+      "customerName": "Kenry",
+      "subject": "ADA Luxury",
+      "message": "Test message",
+      "sentAt": "2026-10-15T00:36:57.390Z",
+      "method": "gmail_direct",
+      "liveDelivery": true
+    },
+    {
+      "id": "c44a9022-eb56-4e91-8ba2-fbb073136e07",
+      "inquiryId": "bef3ca90-0358-4ed1-9271-bbe04e60da89",
+      "to": "adaolowokenry123@gmail.com",
+      "customerName": "Kenry",
+      "subject": "ADA'S HENRY Catalog — Availability & Pricing Details",
+      "message": "Dear Kenry,\n\nThank you for your interest in ADA'S HENRY exclusive collections.\n\nIn response to your inquiry regarding item availability and pricing, we are pleased to inform you that our signature pieces are currently available in our boutique inventory.\n\nProduct & Order Highlights:\n- Handcrafted with genuine premium materials\n- Complimentary bespoke packaging included\n- Priority reservation active upon your confirmation\n\nPlease let us know your preferred sizing and colorway so we can reserve this for you immediately.\n\nWarm regards,\nADA'S HENRY Sales & Concierge\nWhatsApp: +234 906 756 6746",
+      "sentAt": "2026-10-15T00:22:22.954Z",
+      "previewUrl": "https://ethereal.email/message/atAbQKfttlAC0Ig6atAcvrJrKujo9rHTAAAAAwxGChKwQyCdbYvj.1W7unQ"
+    },
+    {
+      "id": "3ae4fac1-0727-4f47-905c-cc58fedb7701",
+      "inquiryId": "bef3ca90-0358-4ed1-9271-bbe04e60da89",
+      "to": "adaolowokenry123@gmail.com",
+      "customerName": "Kenry",
+      "subject": "ADA'S HENRY Luxury Concierge — Response to your inquiry",
+      "message": "Dear Kenry,\n\nThank you for reaching out to ADA'S HENRY Luxury Boutique.\n\nWe have received your message regarding: \"i want to other something precious\".\n\nWe are delighted to assist you. At ADA'S HENRY, our collections are handcrafted with the finest materials and meticulous attention to detail.\n\n\n\nIf you have any questions or would like to proceed with reserving your selection, please feel free to let us know.\n\nWarm regards,\nADA'S HENRY Luxury Concierge Team\nWhatsApp: +234 906 756 6746 | Email: concierge@adashenry.com\nLagos, Nigeria",
+      "sentAt": "2026-10-15T00:16:33.302Z",
+      "previewUrl": "https://ethereal.email/message/atAbQKfttlAC0Ig6atAbYbJrKujo9rGSAAAAAjlPjyzk.TAw2FnrmDgrPdQ"
+    },
+    {
+      "id": "be51de21-5577-4151-84c0-ba46ab557d00",
+      "inquiryId": "af88f623-a1a6-45bc-9536-ed7115e5ecad",
+      "to": "adas123@gmail.com",
+      "customerName": "Kenro",
+      "subject": "ADA'S HENRY Luxury Concierge — Response to your inquiry",
+      "message": "Dear Kenro,\n\nThank you for reaching out to ADA'S HENRY Luxury Boutique.\n\nWe have received your message regarding: \"get it done\".\n\nWe are delighted to assist you. At ADA'S HENRY, our collections are handcrafted with the finest materials and meticulous attention to detail.\n\n\n\nIf you have any questions or would like to proceed with reserving your selection, please feel free to let us know.\n\nWarm regards,\nADA'S HENRY Luxury Concierge Team\nWhatsApp: +234 906 756 6746 | Email: concierge@adashenry.com\nLagos, Nigeria",
+      "sentAt": "2026-10-15T00:16:01.555Z",
+      "previewUrl": "https://ethereal.email/message/atAbQKfttlAC0Ig6atAbQcAYPlgYjGRpAAAAAdnkGZxr-LqMjLe5b7duJR4"
+    },
+    {
+      "id": "907c3ff9-0beb-414d-96b3-ba9aa749c595",
+      "inquiryId": "af88f623-a1a6-45bc-9536-ed7115e5ecad",
+      "to": "adas123@gmail.com",
+      "customerName": "Kenro",
+      "subject": "ADA'S HENRY — Order Confirmation & Consultation",
+      "message": "Dear Kenro, your order inquiry is being handled with utmost priority.",
+      "sentAt": "2026-10-15T00:13:50.736Z",
+      "previewUrl": "https://ethereal.email/message/atAatqfttlAC0HfGatAavp0L.yTpBQxWAAAAAjrK6359hN-tQjzoV1TsVHo"
+    },
+    {
+      "id": "f508de65-a7f2-403e-b519-7f1717b01d45",
+      "inquiryId": "bef3ca90-0358-4ed1-9271-bbe04e60da89",
+      "to": "adaolowokenry123@gmail.com",
+      "customerName": "Kenry",
+      "subject": "ADA'S HENRY Luxury Concierge — Response to your inquiry",
+      "message": "Dear Kenry, thank you for reaching out to ADA'S HENRY. We have reserved your requested item for immediate viewing and delivery.",
+      "sentAt": "2026-10-15T00:13:43.251Z",
+      "previewUrl": "https://ethereal.email/message/atAatqfttlAC0HfGatAat7JrKujo9rFpAAAAAUhD9g1LO7ZPbihLgzfW6Wk"
+    },
+    {
+      "id": "b46d20fe-4497-4c01-90c8-13ca6657a0ec",
+      "inquiryId": "bef3ca90-0358-4ed1-9271-bbe04e60da89",
+      "to": "adaolowokenry123@gmail.com",
+      "customerName": "Kenry",
+      "subject": "ADA'S HENRY Luxury Concierge — Response to your inquiry",
+      "message": "Dear Kenry, thank you for reaching out to ADA'S HENRY. We have reserved your requested item for immediate viewing and delivery.",
+      "sentAt": "2026-10-15T00:13:17.034Z",
+      "previewUrl": "https://ethereal.email/message/atAacKfttlAC0HFXatAanVz99noLeEwRAAAAAsRJyT9ck1Pb9UhiCo.qNcM"
+    },
+    {
+      "id": "13c2428e-3414-4251-ab50-75ccea6080f7",
+      "inquiryId": "bef3ca90-0358-4ed1-9271-bbe04e60da89",
+      "to": "adaolowokenry123@gmail.com",
+      "customerName": "Kenry",
+      "subject": "ADA'S HENRY Luxury Concierge — Response to your inquiry",
+      "message": "Dear Kenry, thank you for contacting ADA'S HENRY. We have reserved your requested item for immediate viewing and delivery.",
+      "sentAt": "2026-10-15T00:12:33.314Z",
+      "previewUrl": "https://ethereal.email/message/atAacKfttlAC0HFXatAaccAYPlgYjGRFAAAAAScHAOdzOaLsdWu-IoaQeZk"
+    }
+  ]
+}
