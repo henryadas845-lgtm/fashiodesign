@@ -40,7 +40,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 text-2xl font-serif font-bold tracking-widest text-text-dark group">
-          <img src={logoImg} alt="ADA'S HENRY Logo" referrerPolicy="no-referrer" className="w-10 h-10 object-cover rounded-sm hidden md:block shadow-sm" />
+          <img src={logoImg} alt="ADA'S HENRY Logo" referrerPolicy="no-referrer" className="w-9 h-9 md:w-10 md:h-10 object-cover rounded-sm block shadow-sm" />
           <div>ADA'S <span className="text-primary group-hover:text-secondary transition-colors">HENRY</span></div>
         </Link>
 

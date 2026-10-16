@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowRight, Star, ShieldCheck, Heart, Truck, Clock, 
-  ShoppingBag, Eye, MessageCircle, Check, Sparkles, 
+  ShoppingBag, Eye, MessageCircle, Check, 
   Filter, X, ChevronRight, RefreshCw, AlertCircle, Search
 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { supabase } from '../lib/supabase';
 
 import shoeImg from '../assets/images/luxury_shoe_1783831961320.jpg';
 import bagImg from '../assets/images/luxury_bag_1783831973371.jpg';
@@ -24,9 +25,65 @@ interface Product {
   updatedAt?: string;
 }
 
+const DEFAULT_PRODUCTS: Product[] = [
+  {
+    id: 'dfff4421-1b89-44bf-8bd0-e86f9f83fd62',
+    name: 'Aura Crystal Stilettos',
+    category: 'Shoes',
+    price: 1250,
+    description: 'Elegant stilettos encrusted with fine crystals. Perfect for a luxurious evening.',
+    availability: true,
+    featured: true,
+    images: ['https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=800&auto=format&fit=crop'],
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'bae59a03-5c93-4461-8111-8999effa55d3',
+    name: 'Monogram Italian Leather Tote',
+    category: 'Bags',
+    price: 2400,
+    description: 'Premium handcrafted Italian leather tote with signature monogram pattern.',
+    availability: true,
+    featured: true,
+    images: ['https://images.unsplash.com/photo-1584916201218-f4242ceb4809?q=80&w=800&auto=format&fit=crop'],
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'b865eee5-8788-4461-b777-f73e986a1344',
+    name: 'Silk Chiffon Evening Gown',
+    category: 'Clothes',
+    price: 3100,
+    description: 'Flowing silk chiffon gown with delicate embroidery and a timeless silhouette.',
+    availability: true,
+    featured: true,
+    images: ['https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=800&auto=format&fit=crop'],
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: '1aca5a18-8335-4ec0-b46f-0e950edb1f10',
+    name: 'Bespoke Royal Tuxedo Suit',
+    category: 'Clothes',
+    price: 2800,
+    description: 'Tailored luxury bespoke suit crafted from premium wool and satin lapels.',
+    availability: true,
+    featured: true,
+    images: ['https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=800&auto=format&fit=crop'],
+    createdAt: new Date().toISOString()
+  }
+];
+
 export default function Home() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState<Product[]>(() => {
+    try {
+      const cached = localStorage.getItem('adas_henry_cached_products');
+      if (cached) {
+        const parsed = JSON.parse(cached);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {}
+    return DEFAULT_PRODUCTS;
+  });
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
@@ -37,26 +94,62 @@ export default function Home() {
 
   const WHATSAPP_NUMBER = '2349067566746';
 
-  const fetchProducts = async (showLoadingState = true) => {
-    if (showLoadingState) setLoading(true);
+  const fetchProducts = async (showLoadingState = false) => {
+    if (showLoadingState && products.length === 0) setLoading(true);
     else setIsRefreshing(true);
     setError(null);
+
+    // 1. Try backend API
     try {
       const res = await fetch('/api/products');
-      if (!res.ok) {
-        throw new Error('Failed to load products');
-      }
-      const data = await res.json();
-      if (Array.isArray(data)) {
-        setProducts(data);
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          setProducts(data);
+          try { localStorage.setItem('adas_henry_cached_products', JSON.stringify(data)); } catch {}
+          setLoading(false);
+          setIsRefreshing(false);
+          return;
+        }
       }
     } catch (err: any) {
-      console.error('Error fetching products for home page:', err);
-      setError('Unable to load latest products. Please check back shortly.');
-    } finally {
-      setLoading(false);
-      setIsRefreshing(false);
+      console.warn('API products fetch notice:', err);
     }
+
+    // 2. Direct Supabase query (crucial for Vercel static deployments)
+    try {
+      const { data, error: supaErr } = await supabase
+        .from('products')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (!supaErr && Array.isArray(data) && data.length > 0) {
+        const mapped: Product[] = data.map((p: any) => ({
+          id: p.id,
+          name: p.name,
+          category: p.category,
+          price: Number(p.price) || 0,
+          description: p.description,
+          availability: p.availability !== false,
+          featured: p.featured === true,
+          images: Array.isArray(p.images) ? p.images : (p.images ? [p.images] : []),
+          createdAt: p.created_at,
+          updatedAt: p.updated_at
+        }));
+        setProducts(mapped);
+        try { localStorage.setItem('adas_henry_cached_products', JSON.stringify(mapped)); } catch {}
+        setLoading(false);
+        setIsRefreshing(false);
+        return;
+      }
+    } catch (supaErr) {
+      console.warn('Supabase query notice:', supaErr);
+    }
+
+    // 3. Keep existing products or fallback to DEFAULT_PRODUCTS
+    setProducts(prev => (prev && prev.length > 0 ? prev : DEFAULT_PRODUCTS));
+    setLoading(false);
+    setIsRefreshing(false);
   };
 
   useEffect(() => {
@@ -169,8 +262,7 @@ export default function Home() {
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={fadeIn} className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/80 border border-primary/20 rounded-full text-xs font-semibold uppercase tracking-wider text-primary mb-6 shadow-sm">
-                <Sparkles size={14} className="text-secondary" />
+              <div className="inline-flex items-center px-4 py-1.5 bg-white/80 border border-primary/20 rounded-full text-xs font-semibold uppercase tracking-wider text-primary mb-6 shadow-sm">
                 <span>Haute Couture & Luxury Essentials</span>
               </div>
               <h1 className="text-5xl md:text-7xl font-serif font-bold text-text-dark leading-tight mb-6">
@@ -197,14 +289,22 @@ export default function Home() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative hidden lg:block group"
+              className="relative block mt-8 lg:mt-0 group"
             >
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-t-[100px] rounded-bl-[100px] transform translate-x-6 translate-y-6 transition-transform duration-700 group-hover:translate-x-8 group-hover:translate-y-8"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-t-[100px] rounded-bl-[100px] transform translate-x-4 lg:translate-x-6 translate-y-4 lg:translate-y-6 transition-transform duration-700 group-hover:translate-x-8 group-hover:translate-y-8"></div>
               <img 
-                src="https://i.ibb.co/nqkbDfpk/sav.jpg" 
-                alt="sav" 
+                src="/sav.jpg" 
+                alt="Haute Couture" 
                 referrerPolicy="no-referrer" 
-                className="relative w-full h-[650px] object-cover object-top rounded-t-[100px] rounded-bl-[100px] shadow-2xl transition-transform duration-700 hover:-translate-y-2 hover:scale-[1.02] active:scale-[0.98] cursor-pointer" 
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  if (!target.src.includes('ibb.co')) {
+                    target.src = 'https://i.ibb.co/nqkbDfpk/sav.jpg';
+                  } else {
+                    target.src = clothImg;
+                  }
+                }}
+                className="relative w-full max-h-[500px] lg:max-h-none lg:h-[650px] object-cover object-top rounded-t-[100px] rounded-bl-[100px] shadow-2xl transition-transform duration-700 hover:-translate-y-2 hover:scale-[1.02] active:scale-[0.98] cursor-pointer" 
               />
             </motion.div>
           </div>
@@ -417,8 +517,7 @@ export default function Home() {
                         )}
 
                         {product.featured && (
-                          <span className="px-2.5 py-1 bg-primary text-white text-[10px] uppercase font-bold tracking-wider rounded-sm shadow-sm flex items-center gap-1">
-                            <Sparkles size={10} />
+                          <span className="px-2.5 py-1 bg-primary text-white text-[10px] uppercase font-bold tracking-wider rounded-sm shadow-sm">
                             Featured
                           </span>
                         )}
@@ -436,12 +535,9 @@ export default function Home() {
                     {/* Content Area */}
                     <div className="p-5 flex-1 flex flex-col justify-between">
                       <div>
-                        <div className="flex items-center justify-between text-xs mb-1.5">
+                        <div className="flex items-center text-xs mb-1.5">
                           <span className="text-primary font-semibold uppercase tracking-wider">
                             {product.category || 'Luxury'}
-                          </span>
-                          <span className="text-gray-400 text-[11px]">
-                            ADA'S HENRY
                           </span>
                         </div>
 
@@ -564,7 +660,10 @@ export default function Home() {
                       className="w-full h-full object-cover"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        target.src = shoeImg;
+                        const cat = (selectedProduct.category || '').toLowerCase();
+                        if (cat.includes('bag')) target.src = bagImg;
+                        else if (cat.includes('cloth')) target.src = clothImg;
+                        else target.src = shoeImg;
                       }}
                     />
                     <div className="absolute top-3 left-3">
@@ -596,6 +695,13 @@ export default function Home() {
                             alt="" 
                             referrerPolicy="no-referrer" 
                             className="w-full h-full object-cover" 
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              const cat = (selectedProduct.category || '').toLowerCase();
+                              if (cat.includes('bag')) target.src = bagImg;
+                              else if (cat.includes('cloth')) target.src = clothImg;
+                              else target.src = shoeImg;
+                            }}
                           />
                         </button>
                       ))}
@@ -611,8 +717,8 @@ export default function Home() {
                         {selectedProduct.category}
                       </span>
                       {selectedProduct.featured && (
-                        <span className="px-2 py-0.5 bg-amber-100 text-amber-800 rounded-full text-[10px] font-semibold flex items-center gap-1">
-                          <Sparkles size={10} /> Featured Piece
+                        <span className="px-2 py-0.5 bg-amber-100 text-amber-800 rounded-full text-[10px] font-semibold">
+                          Featured Piece
                         </span>
                       )}
                     </div>

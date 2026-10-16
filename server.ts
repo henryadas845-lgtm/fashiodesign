@@ -163,7 +163,7 @@ async function startServer() {
   // Admin Login
   app.post('/api/admin/login', (req: any, res: any) => {
     const { password } = req.body;
-    const cleanPass = typeof password === 'string' ? password.trim() : '';
+    const cleanPass = typeof password === 'string' ? password.trim().replace(/^["']|["']$/g, '').trim() : '';
     if (cleanPass === 'Henry123' || cleanPass.toLowerCase() === 'henry123') {
       req.session.isAdmin = true;
       res.json({ success: true, token: ADMIN_AUTH_TOKEN });
